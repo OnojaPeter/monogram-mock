@@ -1,20 +1,23 @@
-import Hero from './components/Hero';
+import { BrowserRouter as Router, Route, Routes  } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import CardsSection from './components/Card';
-import Cards2Section from './components/Card2';
-import CreateSectionSection from './components/CreateConsole';
+import HomePage from './pages/HomePage';
+import ProductDetailPage from './pages/productDetailPage';
 import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className='bg-[#f0efed]'>
-      <Navbar />
-      <Hero />
-      <CardsSection />
-      <CreateSectionSection />
-      <Cards2Section />
-      <Footer />
-    </div>
+    <Router>
+      <div>
+        {/* <PageTop /> */}
+        <Navbar />
+        <Routes >
+          <Route path="/" element={<HomePage />} />
+          <Route path="/products/:id" element={<ProductDetailPage />} />
+        </Routes>
+        {/* <ScrollToTopButton /> */}
+        <Footer />
+      </div>
+    </Router>
   )
 }
 

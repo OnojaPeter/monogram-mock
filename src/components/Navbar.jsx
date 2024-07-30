@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { IoBagOutline } from "react-icons/io5";
 import { MdArrowDropDown, MdKeyboardArrowLeft, MdOutlineCancel } from "react-icons/md";
+import {Link} from 'react-router-dom'
 
 const Navbar = () => {
   const [isDropdown, setIsDropdown] = useState(false);
@@ -67,9 +68,9 @@ const Navbar = () => {
             <ul className="flex lg:gap-6 place-items-center ">
               <div className="hidden lg:flex items-center gap-6">
                 <li className="nav-item text-[.8rem]">
-                  <a className="py-[.5rem] px-[.5rem]" href="">
+                  <Link className="py-[.5rem] px-[.5rem]" to="/">
                     how it works
-                  </a>
+                  </Link>
                 </li>
                 <li
                   className="nav-item text-[.8rem] relative"
@@ -187,24 +188,24 @@ const Navbar = () => {
               <h4 className="mt-12 mb-4 text-center lead uppercase" style={{letterSpacing: '2px'}}>
                 Nothing in your bag!
               </h4>
-              <p class="text-center mb-12 text-[#6c757d]">
-                <a aria-current="page" class="text-[#ff7952]" href="/shop/">
+              <p className="text-center mb-12 text-[#6c757d]">
+                <a aria-current="page" className="text-[#ff7952]" href="/shop/">
                   Start shopping
                 </a> to see if you qualify for free&nbsp;shipping.
               </p>
 
-              <div class="flex">
+              <div className="flex">
                 <img
                   src="/static/2961c204c15cdb57d4b6510717020767/better_editing_guaranteed_blue_7b7e094cce.svg"
                   alt="Monogram Better Editing Guarantee"
-                  class="self-center mr-2"
+                  className="self-center mr-2"
                   style={{ width: "6em" }}
                 />
-                <div class="flex-1">
-                  <h6 class="mb-2 uppercase">
+                <div className="flex-1">
+                  <h6 className="mb-2 uppercase">
                     Monogram Better Editing Guarantee
                   </h6>
-                  <div class="text-[0.7rem]">
+                  <div className="text-[0.7rem]">
                     <p>
                       Try Monogram Creative Console in your own workflow for 100
                       days. If it does not improve your editing experience, you
@@ -216,12 +217,12 @@ const Navbar = () => {
 
               <div className="mt-4 flex-grow h-full"></div>
 
-              <div class="text-center">
-                <p class="mb-0 uppercase text-[#6c757d]">
+              <div className="text-center">
+                <p className="mb-0 uppercase text-[#6c757d]">
                   <small>Secure Payments</small>
                 </p>
-                <ul class="flex justify-center gap-2 mb-0">
-                  <li class="list-inline-item">
+                <ul className="flex justify-center gap-2 mb-0">
+                  <li className="list-inline-item">
                     <svg width="2em" role="img" viewBox="0 0 38 24" height="24">
                       <title>American Express</title>
                       <g fill="none">
@@ -241,7 +242,7 @@ const Navbar = () => {
                       </g>
                     </svg>
                   </li>
-                  <li class="list-inline-item">
+                  <li className="list-inline-item">
                     <svg width="2em" viewBox="0 0 38 24" role="img" height="24">
                       <title>Mastercard</title>
                       <path
@@ -260,7 +261,7 @@ const Navbar = () => {
                       ></path>
                     </svg>
                   </li>
-                  <li class="list-inline-item">
+                  <li className="list-inline-item">
                     <svg width="2em" viewBox="0 0 38 24" role="img" height="24">
                       <title>Visa</title>
                       <path
@@ -277,7 +278,7 @@ const Navbar = () => {
                       ></path>
                     </svg>
                   </li>
-                  <li class="list-inline-item">
+                  <li className="list-inline-item">
                     <svg
                       width="2em"
                       version="1.1"
@@ -286,7 +287,7 @@ const Navbar = () => {
                       y="0"
                       height="24"
                       viewBox="0 0 165.521 105.965"
-                      xml:space="preserve"
+                      xmlSpace="preserve"
                     >
                       <title>Apple Pay</title>
                       <path
@@ -326,7 +327,7 @@ const Navbar = () => {
                       </g>
                     </svg>
                   </li>
-                  <li class="list-inline-item">
+                  <li className="list-inline-item">
                     <svg width="2em" role="img" viewBox="0 0 38 24" height="24">
                       <title>Google Pay</title>
                       <path
@@ -360,7 +361,7 @@ const Navbar = () => {
                       ></path>
                     </svg>
                   </li>
-                  <li class="list-inline-item">
+                  <li className="list-inline-item">
                     <svg width="2em" role="img" viewBox="0 0 38 24" height="24">
                       <title>Shop Pay</title>
                       <rect
@@ -423,7 +424,7 @@ const Navbar = () => {
                   </svg>
                 </a>  
                 <button onClick={() => setIsMobileMenu(false)} className="flex h-full py-2 w-16 justify-center">
-                  <svg width="36" height="36" class="float-right" aria-hidden="true" fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path></svg>
+                  <svg width="36" height="36" className="float-right" aria-hidden="true" fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path></svg>
                 </button>               
               </div>
             </header>

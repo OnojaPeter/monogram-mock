@@ -9,7 +9,8 @@ const firstProducts = [
     description: "Ideal for everyday shortcuts. Adaptable to any workflow",
     price: "249",
     image: "/images/Everyday-Bundle-Mocks-final.webp",
-    hoverImage: "/images/Everyday-Bundle-Mocks.webp"
+    hoverImage: "/images/Everyday-Bundle-Mocks.webp",
+    path: 'products/mini-console'
   },
   {
     id: 2,
@@ -17,7 +18,8 @@ const firstProducts = [
     description: "Ideal for music & audio. Adaptable to any workflow.",
     price: "499",
     image: "/images/Packaging_TravelerClosedBracket1_Monogram.webp",
-    hoverImage: "/images/Consoles_TravelerBracket1_Monogram.webp"
+    hoverImage: "/images/Consoles_TravelerBracket1_Monogram.webp",
+    path: 'products/audio-console'
   },
   {
     id: 3,
@@ -68,38 +70,39 @@ const CardsSection = () => {
             onMouseLeave={() => notHover()}
             className={`w-full ${product.id === 5 ? 'w-full ' : 'md:w-[50%]'}  px-2 mb-6`}
           >
-            
-            <div className="relative">
-              <img
-                className={`h-full w-full transition-opacity duration-300 ease-in-out object-cover ${product.id === 5 ? 'md:h-[272px] lg:h-[380px]' : ''}`}
-                style={{opacity: isHover === product.id ? 0 : 1, }}
-                src={
-                   product.image
-                }
-                alt={`slide ${product.name}`}
-              />
-              <img
-                className={`absolute top-0 left-0 h-full w-full transition-opacity duration-300 ease-in-out object-cover `}
-                style={{opacity: isHover === product.id ? 1 : 0}}
-                src={
-                  product.hoverImage 
-                }
-                alt={`slide ${product.name}`}
-              />
-            </div>
-            <div className="dark-color pt-2">
-              <div className="flex justify-between relative">
-                <h3 className="uppercase mb-2">{product.name}</h3>
-                <div className="min-w-[8rem] text-end">
-                    <p className="mb-2 relative transition-opacity duration-300 ease-in-out" style={{opacity: isHover === product.id ?0 : 1, }}>${product.price}</p> 
-                    <button className="absolute top-0 right-0 btn px-4 transition-opacity duration-300 ease-in-out bg-[#1a2456] hover:bg-[#111839] text-white rounded-[50rem] border border-[#0e142f]"
-                        style={{opacity: isHover === product.id ?1 : 0}} >Shop Now
-                    </button>
-                </div>
-                
+            <Link to={product.path}>           
+              <div className="relative">
+                <img
+                  className={`h-full w-full transition-opacity duration-300 ease-in-out object-cover ${product.id === 5 ? 'md:h-[272px] lg:h-[380px]' : ''}`}
+                  style={{opacity: isHover === product.id ? 0 : 1, }}
+                  src={
+                    product.image
+                  }
+                  alt={`slide ${product.name}`}
+                />
+                <img
+                  className={`absolute top-0 left-0 h-full w-full transition-opacity duration-300 ease-in-out object-cover `}
+                  style={{opacity: isHover === product.id ? 1 : 0}}
+                  src={
+                    product.hoverImage 
+                  }
+                  alt={`slide ${product.name}`}
+                />
               </div>
-              <p className="cardText">{product.description}</p>
-            </div>
+              <div className="dark-color pt-2">
+                <div className="flex justify-between relative">
+                  <h3 className="uppercase mb-2">{product.name}</h3>
+                  <div className="min-w-[8rem] text-end">
+                      <p className="mb-2 relative transition-opacity duration-300 ease-in-out" style={{opacity: isHover === product.id ?0 : 1, }}>${product.price}</p> 
+                      <button className="absolute top-0 right-0 btn px-4 transition-opacity duration-300 ease-in-out bg-[#1a2456] hover:bg-[#111839] text-white rounded-[50rem] border border-[#0e142f]"
+                          style={{opacity: isHover === product.id ?1 : 0}} >Shop Now
+                      </button>
+                  </div>
+                  
+                </div>
+                <p className="cardText">{product.description}</p>
+              </div>
+            </Link>
           </div>
         ))}
       </div>
