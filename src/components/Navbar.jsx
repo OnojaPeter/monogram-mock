@@ -1,14 +1,24 @@
-import { useEffect, useState, useRef } from "react";
-import { IoBagOutline } from "react-icons/io5";
-import { MdArrowDropDown, MdKeyboardArrowLeft, MdOutlineCancel } from "react-icons/md";
+import { useEffect, useState, useRef, useContext  } from "react";
+import { MdArrowDropDown, MdKeyboardArrowLeft } from "react-icons/md";
 import {Link} from 'react-router-dom'
+import { CartContext } from "../contexts/CartContext";
 
 const Navbar = () => {
+  const { cartItems, subtotal, updateItemQuantity, removeItemFromCart  } = useContext(CartContext);
   const [isDropdown, setIsDropdown] = useState(false);
   const [ isCart, setIsCart ] = useState(false)
   const [ isMobileMenu, setIsMobileMenu ] = useState(false)
   const dropdownRef = useRef(null);
 
+  function handleQuantityChange (id, event) {
+    const updateQuantity = parseInt(event.target.value, 10);
+    updateItemQuantity(id, updateQuantity)
+  }
+  const getMaxQuantity = (currentQuantity) => {
+    const q = Math.max(currentQuantity, 6)
+    // console.log(' quantity:',q)
+    return q;
+  };
   function handleClick(event) {
     if (event && event.stopPropagation) {
       event.stopPropagation();
@@ -149,7 +159,14 @@ const Navbar = () => {
               </button>
               <div className="flex items-center">
                 <li className="nav-item ">
-                  <button className="" onClick={() => setIsCart((prev) => !prev)}>
+                  {/* {console.log(cartItems.length)} */}
+                  <button className="relative" onClick={() => setIsCart((prev) => !prev)}>
+                    {cartItems.length > 0 && 
+                      <p className="absolute inset-0 top-[0.35rem] text-[0.8rem] font-medium">
+                        {cartItems.reduce((acc,item)=> acc + item.quantity, 0)}
+                      </p>
+                    }
+                    {/* {cartItems.reduce((acc,item)=> acc + item.quantity, 0)} */}
                     <svg
                       height="25"
                       width="25"
@@ -185,18 +202,55 @@ const Navbar = () => {
             </header>
 
             <div className="bg-white dark-color p-4 flex flex-col flex-auto overflow-y-auto">
-              <h4 className="mt-12 mb-4 text-center lead uppercase" style={{letterSpacing: '2px'}}>
-                Nothing in your bag!
-              </h4>
-              <p className="text-center mb-12 text-[#6c757d]">
-                <a aria-current="page" className="text-[#ff7952]" href="/shop/">
-                  Start shopping
-                </a> to see if you qualify for free&nbsp;shipping.
-              </p>
+              {cartItems.length === 0 ? 
+                <div>
+                  <h4 className="mt-12 mb-4 text-center lead uppercase" style={{letterSpacing: '2px'}}>
+                    Nothing in your bag!
+                  </h4>
+                  <p className="text-center mb-12 text-[#6c757d]">
+                    <a aria-current="page" className="text-[#ff7952] hover:underline" href="/shop/">
+                      Start shopping
+                    </a> to see if you qualify for free&nbsp;shipping.
+                  </p>
+                </div>
+                :
+                <ul>
+                  <div className="flex gap-1 bg-[#dee5e3] mb-4 py-3 justify-center">
+                    <svg className="mr-1" width="1.5em" height="1.5em" fill="currentColor" viewBox="0 0 16 16"><path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"></path><path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"></path></svg>
+                    Free shipping
+                  </div>
+
+                  {cartItems.map((item, index) => (
+                    <li key={item.id} className="flex gap-4 relative mb-4 pb-4 border-b border-gray-700">
+                      <div className="w-[35%]"><img className="w-[200px] h-[100px] object-cover" src={item.image} alt={item.name} /></div>
+                      <div className="w-[65%]">
+                        <h5 className="uppercase w-[80%]">{item.name}</h5>
+                        <p>{item.color}</p>
+                        <p>${(item.price * item.quantity)}</p>
+                        <div className="flex items-center mt-3">
+                          <select 
+                            value={item.quantity}
+                            onChange={(event) => handleQuantityChange(item.id, event)}
+                            className="bg-white px-1 rounded-full border-2 border-blue-900" name="quantity" id="quantity">
+                            {[...Array(getMaxQuantity(item.quantity))].map((_, i) => (
+                              <option key={i} value={i + 1}>{i + 1}</option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+                      <button onClick={()=> removeItemFromCart(item.id)} className="absolute right-0 text-gray-400 hover:text-red-900">
+                        <svg width="26" height="26" className="float-right" aria-hidden="true" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
+                        </svg>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              }
 
               <div className="flex">
                 <img
-                  src="/static/2961c204c15cdb57d4b6510717020767/better_editing_guaranteed_blue_7b7e094cce.svg"
+                  src="/images/better_editing.svg"
                   alt="Monogram Better Editing Guarantee"
                   className="self-center mr-2"
                   style={{ width: "6em" }}
@@ -387,13 +441,16 @@ const Navbar = () => {
               <div className="m-[.25rem]">
                 <div className="flex justify-between mt-4 mb-4">
                   <h4>Subtotal</h4>
-                  <p>$0</p>
+                  <p>${subtotal.toFixed(2)}</p>
                 </div>
                 <div className="">
-                  <button className="w-full py-3 mb-3 bg-[#EFC2B3] text-[#1a2456] rounded-full uppercase font-[600]">
+                  <button 
+                    className={`${cartItems.length === 0 ? 'opacity-50' : 'opacity-100'} w-full py-3 mb-3 bg-[#EFC2B3] text-[#1a2456] rounded-full uppercase font-[600]`}>
                     checkout
                   </button>
-                  <p className="text-center text-[0.75rem] text-[#ff7952] py-1">gift card or discount code</p>
+                  <p className="text-center text-[0.75rem] color hover:text-[#ff7952] hover:underline py-1">
+                    <a href="">gift card or discount code</a>
+                  </p>
                 </div>
               </div>
             </footer>

@@ -192,3 +192,21 @@ footer svg {
 .white-bg {
   background-color: hsla(0, 0%, 100%, .8);
 }
+
+.alert {
+  border: 1px solid transparent;
+  border-radius: 0;
+  margin-bottom: 1rem;
+  padding: .75rem 1.25rem;
+  position: relative;
+}
+.alert-success {
+  background-color: #dee5e3;
+  border-color: #d1dbd7;
+  color: #2f423b;
+}
+.alert-error {
+  background-color: #ad421b;
+  border-color: #d1dbd7;
+  color: #e6ecea;
+}
