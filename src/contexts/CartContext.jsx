@@ -10,6 +10,8 @@ export const CartProvider = ({ children }) => {
   });
 
   const [subtotal, setSubtotal] = useState(0);
+  const [isLoading, setIsLoading] = useState(false)
+  const [isAdded, setIsAdded] = useState(false);
 
   const calculateSubtotal = (items) => {
     if (!Array.isArray(items)) return 0;
@@ -23,6 +25,7 @@ export const CartProvider = ({ children }) => {
   }, [cartItems]);
 
   const addItemToCart = (product, quantity) => {
+    setIsLoading(true)
     const existingItem = cartItems.find((item)=> item.id === product.id)
     if (existingItem) {
         setCartItems((prevItems)=>
@@ -36,7 +39,14 @@ export const CartProvider = ({ children }) => {
             { ...product, quantity },
         ]);
     }
-    console.log('subtotal:', subtotal)
+    setTimeout(()=>{
+        setIsLoading(false)
+        setIsAdded(true)
+    }, 500)
+    
+  };
+  const clearNotification = () => {
+    setIsAdded(false);
   };
 
   const updateItemQuantity = (id, quantity) => {
@@ -60,7 +70,7 @@ export const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, subtotal, addItemToCart, updateItemQuantity, removeItemFromCart, setCartItems }}>
+    <CartContext.Provider value={{ cartItems, subtotal, isLoading, addItemToCart, updateItemQuantity, removeItemFromCart, isAdded, clearNotification }}>
       {children}
     </CartContext.Provider>
   );

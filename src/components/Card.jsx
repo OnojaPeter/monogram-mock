@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {Link} from 'react-router-dom';
-import { firstProducts } from "../Data";
+import { products } from "../Data";
 
 // const firstProducts = [
 //   {
@@ -49,11 +49,7 @@ import { firstProducts } from "../Data";
 const CardsSection = () => {
   const [isHover, setIsHover] = useState(null);
 
-  // const hover = () => {
-  //     !isHover ? setIsHover(true) : setIsHover(false)
-  // }
   const hover = (id) => {
-    // console.log(id)
     setIsHover(id);
   };
   const notHover = () => {
@@ -63,7 +59,7 @@ const CardsSection = () => {
     <section className="px-5">
         <div id="next"></div>
       <div className="max-w-[600px] md:max-w-[728px] lg:max-w-[994px] xl:max-w-[1220px] mx-auto flex flex-wrap mb-4 pt-6 md:pt-12 relative" >
-        {firstProducts.map((product, index) => (
+        {products.slice(0,5).map((product, index) => (
           <div
             key={product.id}
             onMouseEnter={() => hover(product.id)}
