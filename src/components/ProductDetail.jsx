@@ -54,7 +54,7 @@ const ProductDetails = () => {
     }
 
     return (
-        <section className="py-24 md:py-28 bg-[#f0efed] ">
+        <section className="pt-24 md:pt-28 md:pb-16 bg-[#f0efed] ">
             <div className="max-w-[600px] md:max-w-[728px] lg:max-w-[994px] xl:max-w-[1220px] mx-auto ">
                 <div className="flex flex-col lg:flex-row">
                 
@@ -150,8 +150,8 @@ const ProductDetails = () => {
                     
                 </div>
 
-                <div className="mt-6 lg:mt-20 md:mx-2 min-h-[300px] relative w-full h-full overflow-hidden flex items-center justify-center">
-                    <div className="absolute inset-0">
+                <div className=" lg:mt-20  min-h-[300px] relative w-full h-full overflow-hidden flex items-center justify-center">
+                    <div className="absolute inset-0 md:mx-2">
                         <img src="/images/mono_poster.jpg" alt="" className="object-cover w-full h-full" />
                     </div>
 

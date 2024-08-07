@@ -55,7 +55,7 @@ const Navbar = () => {
     <>
       <div className="fixed z-50 w-full ">
         <div className="color uppercase flex flex-wrap justify-between bg-[#1a2456] p-2 m-1 sm:m-4">
-          <div>
+          <Link to="/">
             <svg height="38" viewBox="0 0 520 114" fill="currentColor">
               <title>Monogram</title>
               <path d="M150,36V0H0V114H150ZM144,6V36H78V6ZM6,6H72V72H6ZM72,108H6V78H72Zm72,0H78V78h0V42h66Z"></path>
@@ -72,7 +72,7 @@ const Navbar = () => {
               <polygon points="476.574 41.958 467.268 62.263 457.955 41.958 452.043 41.958 452.031 71.636 457.969 71.636 457.969 54.794 465.709 71.636 468.82 71.636 476.56 54.794 476.56 71.636 482.501 71.636 482.501 41.958 476.574 41.958"></polygon>
               <path d="M404.4,57.222a9.5,9.5,0,0,0,1.649-5.623,9.138,9.138,0,0,0-2.779-7.193,11.069,11.069,0,0,0-7.683-2.448H383.069V71.636h6.225v-10.5h4.883l5.554,10.5h6.483l-5.959-11.25A9.062,9.062,0,0,0,404.4,57.222Zm-4.579-5.62a3.694,3.694,0,0,1-1.351,3.125,6.154,6.154,0,0,1-3.8,1.1h-.024l-5.345,0V47.266h5.345C398.172,47.266,399.817,48.633,399.818,51.6Z"></path>
             </svg>
-          </div>
+          </Link>
 
           <div className="flex place-items-center ">
             <ul className="flex lg:gap-6 place-items-center ">
@@ -489,18 +489,18 @@ const Navbar = () => {
 
             <div className="pl-24 flex-auto pr-[1rem] pb-[1rem] overflow-y-auto" id="this">
               <ul className="uppercase ">
-                <li><a href="#">HOW IT WORKS</a></li>
-                <li><a href="#">WORKFLOWS</a></li>
+                <li>HOW IT WORKS</li>
+                <li>WORKFLOWS</li>
                   <ul className="ml-7">
-                    <li><a href="#">AUDIO CONSOLE </a></li>
-                    <li><a href="#">PHOTO CONSOLE </a></li>
-                    <li><a href="#">VIDEO CONSOLE </a></li>
-                    <li><a href="#">MINI CONSOLE </a></li>
+                    <li>AUDIO CONSOLE </li>
+                    <li>PHOTO CONSOLE </li>
+                    <li>VIDEO CONSOLE </li>
+                    <li>MINI CONSOLE </li>
                   </ul>              
-                <li><a href="#">DOWNLOAD</a></li>
-                <li><a href="#">BLOG</a></li>
-                <li><a href="#">SUPPORT</a></li>
-                <li><a href="#">SHOP</a></li>
+                <li>DOWNLOAD</li>
+                <li>BLOG</li>
+                <li>SUPPORT</li>
+                <li>SHOP</li>
               </ul>
             </div>
           </div>        

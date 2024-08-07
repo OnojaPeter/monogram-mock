@@ -18,7 +18,7 @@ const Accordion = ({product}) => {
             onClick={() => handleAccordion(1)}
             className="flex items-center justify-between py-5 pr-2 cursor-pointer"
             >
-            <h3 className="uppercase">product description</h3>
+            <h2 className="uppercase">product description</h2>
             <div>{openAccordion === 1 ? <FaMinus /> : <FaPlus />}</div>
             </header>
             <div
@@ -34,7 +34,7 @@ const Accordion = ({product}) => {
                 </p>
                 </div>
                 <div className="space-y-5">
-                <h4>PRODUCT DETAILS</h4>
+                <h2>PRODUCT DETAILS</h2>
 
                 {product.productDescription.details.heading ? 
                     <div className="ml-7">
@@ -81,7 +81,7 @@ const Accordion = ({product}) => {
                     onClick={() => handleAccordion(2)}
                     className="flex items-center justify-between py-5 pr-2 cursor-pointer"
                     >
-                    <h3 className="uppercase">our better editing experience</h3>
+                    <h2 className="uppercase">our better editing experience</h2>
                     <div>{openAccordion === 2 ? <FaMinus /> : <FaPlus />}</div>
                     </header>
                     <div
@@ -104,7 +104,7 @@ const Accordion = ({product}) => {
                     onClick={() => handleAccordion(3)}
                     className="flex items-center justify-between py-5 pr-2 cursor-pointer"
                     >
-                    <h3 className="uppercase">build quality and materials</h3>
+                    <h2 className="uppercase">build quality and materials</h2>
                     <div>{openAccordion === 3 ? <FaMinus /> : <FaPlus />}</div>
                     </header>
                     <div
@@ -148,7 +148,7 @@ const Accordion = ({product}) => {
                     onClick={() => handleAccordion(4)}
                     className="flex items-center justify-between py-5 pr-2 cursor-pointer"
                     >
-                    <h3 className="uppercase">shipping and sales tax</h3>
+                    <h2 className="uppercase">shipping and sales tax</h2>
                     <div>{openAccordion === 4 ? <FaMinus /> : <FaPlus />}</div>
                     </header>
                     <div
@@ -176,7 +176,7 @@ const Accordion = ({product}) => {
                     onClick={() => handleAccordion(5)}
                     className="flex items-center justify-between py-5 pr-2 cursor-pointer"
                     >
-                    <h3 className="uppercase">warranty and support</h3>
+                    <h2 className="uppercase">warranty and support</h2>
                     <div>{openAccordion === 5 ? <FaMinus /> : <FaPlus />}</div>
                     </header>
                     <div

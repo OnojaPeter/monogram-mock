@@ -14,7 +14,7 @@ const Cards2Section = () => {
   };
   return (
     <section className="px-5">
-      <div className="max-w-[600px] md:max-w-[728px] lg:max-w-[994px] xl:max-w-[1220px] mx-auto flex flex-wrap mb-4 md:mb-12 pt-6 md:pt-12 relative" >
+      <div className="max-w-[600px] md:max-w-[728px] lg:max-w-[994px] xl:max-w-[1220px] mx-auto flex flex-wrap pb-4 md:pb-12 pt-6 md:pt-12 relative" >
         {products.slice(5).map((product, index) => (
           <div
             key={product.id}
